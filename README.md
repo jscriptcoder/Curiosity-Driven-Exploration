@@ -13,8 +13,10 @@
 1. [Curiosity-driven Exploration by Self-supervised Prediction](https://www.youtube.com/watch?v=_Z9ZP1eiKsI)
 2. [Curiosity Driven Exploration by Self-Supervised Prediction](https://www.youtube.com/watch?v=J3FHOyhUn3A)
 3. [Curiosity-driven Exploration by Self-supervised Prediction](https://vimeo.com/237270588)
+4. [Curiosity-Driven AI: How Effective Is It? | Two Minute Papers](https://www.youtube.com/watch?v=9S2g7iixB9c)
 
 ## Repos
 1. [Curiosity-driven Exploration by Self-supervised Prediction](https://github.com/jcwleo/curiosity-driven-exploration-pytorch)
 2. [Implementation of curiosity-driven exploration in PyTorch](https://github.com/srama2512/curiosity-driven-exploration)
-3. [Curiosity-Driven AI: How Effective Is It? | Two Minute Papers](https://www.youtube.com/watch?v=9S2g7iixB9c)
+3.[Reproduction of Curiosity-driven Exploration by Self-supervised Prediction in PyTorch](https://github.com/qfettes/CuriosityDrivenExplorationBySelfSupervisedPrediction)
+
