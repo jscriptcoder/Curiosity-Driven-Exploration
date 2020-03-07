@@ -9,6 +9,7 @@
 2. [Curiosity-Driven Learning made easy Part I](https://towardsdatascience.com/curiosity-driven-learning-made-easy-part-i-d3e5a2263359)
 3. [Explained: Curiosity-Driven Learning in RL](https://towardsdatascience.com/explained-curiosity-driven-learning-in-rl-exploration-by-random-network-distillation-72b18e69eb1b)
 4. [Random Network Distillation: a new take on Curiosity-Driven Learning](https://medium.com/data-from-the-trenches/curiosity-driven-learning-through-random-network-distillation-488ffd8e5938)
+5. [Reinforcement Learning with Prediction-Based Rewards](https://openai.com/blog/reinforcement-learning-with-prediction-based-rewards/)
 
 ## Videos
 1. [Curiosity-driven Exploration by Self-supervised Prediction](https://www.youtube.com/watch?v=_Z9ZP1eiKsI)
