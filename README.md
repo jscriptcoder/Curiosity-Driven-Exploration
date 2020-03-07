@@ -18,5 +18,5 @@
 ## Repos
 1. [Curiosity-driven Exploration by Self-supervised Prediction](https://github.com/jcwleo/curiosity-driven-exploration-pytorch)
 2. [Implementation of curiosity-driven exploration in PyTorch](https://github.com/srama2512/curiosity-driven-exploration)
-3.[Reproduction of Curiosity-driven Exploration by Self-supervised Prediction in PyTorch](https://github.com/qfettes/CuriosityDrivenExplorationBySelfSupervisedPrediction)
+3. [Reproduction of Curiosity-driven Exploration by Self-supervised Prediction in PyTorch](https://github.com/qfettes/CuriosityDrivenExplorationBySelfSupervisedPrediction)
 
