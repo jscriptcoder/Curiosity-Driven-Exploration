@@ -3,6 +3,7 @@
 ## Papers:
 1. [Curiosity-driven Exploration by Self-supervised PredictionCuriosity-driven Exploration by Self-supervised Prediction](https://pathak22.github.io/noreward-rl/)
 2. [Large-Scale Study of Curiosity-Driven Learning](https://pathak22.github.io/large-scale-curiosity/)
+3. [Episodic Curiosity through Reachability](https://arxiv.org/abs/1810.02274)
 
 ## Articles
 1. [Curiosity-Driven Learning through Next State Prediction](https://medium.com/data-from-the-trenches/curiosity-driven-learning-through-next-state-prediction-f7f4e2f592fa)
@@ -10,6 +11,7 @@
 3. [Explained: Curiosity-Driven Learning in RL](https://towardsdatascience.com/explained-curiosity-driven-learning-in-rl-exploration-by-random-network-distillation-72b18e69eb1b)
 4. [Random Network Distillation: a new take on Curiosity-Driven Learning](https://medium.com/data-from-the-trenches/curiosity-driven-learning-through-random-network-distillation-488ffd8e5938)
 5. [Reinforcement Learning with Prediction-Based Rewards](https://openai.com/blog/reinforcement-learning-with-prediction-based-rewards/)
+6, [Curiosity and Procrastination in Reinforcement Learning](https://ai.googleblog.com/2018/10/curiosity-and-procrastination-in.html)
 
 ## Videos
 1. [Curiosity-driven Exploration by Self-supervised Prediction](https://www.youtube.com/watch?v=_Z9ZP1eiKsI)
