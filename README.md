@@ -1,4 +1,4 @@
-# Curiosity-driven Exploration by Self-supervised Prediction
+# Curiosity-driven Exploration
 
 Researh in progress...
 
