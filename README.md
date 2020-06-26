@@ -19,6 +19,7 @@ Researh in progress...
 6. [Random Network Distillation: a new take on Curiosity-Driven Learning](https://medium.com/data-from-the-trenches/curiosity-driven-learning-through-random-network-distillation-488ffd8e5938)
 7. [Reinforcement Learning with Prediction-Based Rewards](https://openai.com/blog/reinforcement-learning-with-prediction-based-rewards/)
 8. [Curiosity and Procrastination in Reinforcement Learning](https://ai.googleblog.com/2018/10/curiosity-and-procrastination-in.html)
+9. [Solving sparse-reward tasks with Curiosity](https://blogs.unity3d.com/2018/06/26/solving-sparse-reward-tasks-with-curiosity/)
 
 ## Videos
 
