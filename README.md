@@ -1,6 +1,6 @@
 # Curiosity-driven Exploration
 
-Researh in progress...
+Research in progress...
 
 ## Papers
 
@@ -8,6 +8,7 @@ Researh in progress...
 2. [Large-Scale Study of Curiosity-Driven Learning](https://arxiv.org/abs/1808.04355)
 3. [Episodic Curiosity through Reachability](https://arxiv.org/abs/1810.02274)
 4. [A survey on intrinsic motivation in reinforcement learning](https://arxiv.org/abs/1908.06976)
+5. [Learning to Play with Intrinsically-Motivated Self-Aware Agents](https://arxiv.org/abs/1802.07442)
 
 ## Articles
 
