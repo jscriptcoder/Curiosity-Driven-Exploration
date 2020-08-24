@@ -9,6 +9,7 @@ Research in progress...
 3. [Episodic Curiosity through Reachability](https://arxiv.org/abs/1810.02274)
 4. [A survey on intrinsic motivation in reinforcement learning](https://arxiv.org/abs/1908.06976)
 5. [Learning to Play with Intrinsically-Motivated Self-Aware Agents](https://arxiv.org/abs/1802.07442)
+6. [Soft Actor-Critic for Discrete Action Settings](https://medium.com/@kengz/soft-actor-critic-for-continuous-and-discrete-actions-eeff6f651954)
 
 ## Articles
 
@@ -21,6 +22,7 @@ Research in progress...
 7. [Reinforcement Learning with Prediction-Based Rewards](https://openai.com/blog/reinforcement-learning-with-prediction-based-rewards/)
 8. [Curiosity and Procrastination in Reinforcement Learning](https://ai.googleblog.com/2018/10/curiosity-and-procrastination-in.html)
 9. [Solving sparse-reward tasks with Curiosity](https://blogs.unity3d.com/2018/06/26/solving-sparse-reward-tasks-with-curiosity/)
+10. [Soft Actor-Critic for continuous and discrete actions](https://medium.com/@kengz/soft-actor-critic-for-continuous-and-discrete-actions-eeff6f651954)
 
 ## Videos
 
@@ -34,4 +36,5 @@ Research in progress...
 1. [Curiosity-driven Exploration by Self-supervised Prediction](https://github.com/jcwleo/curiosity-driven-exploration-pytorch)
 2. [Implementation of curiosity-driven exploration in PyTorch](https://github.com/srama2512/curiosity-driven-exploration)
 3. [Reproduction of Curiosity-driven Exploration by Self-supervised Prediction in PyTorch](https://github.com/qfettes/CuriosityDrivenExplorationBySelfSupervisedPrediction)
-
+4. [Soft Actor-Critic algorithm to allow for both image observations and discrete action spaces](https://github.com/ac-93/soft-actor-critic)
+5. [Deep Reinforcement Learning Algorithms with PyTorch](https://github.com/p-christ/Deep-Reinforcement-Learning-Algorithms-with-PyTorch)
