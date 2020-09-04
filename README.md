@@ -9,7 +9,7 @@ Research in progress...
 3. [Episodic Curiosity through Reachability](https://arxiv.org/abs/1810.02274)
 4. [A survey on intrinsic motivation in reinforcement learning](https://arxiv.org/abs/1908.06976)
 5. [Learning to Play with Intrinsically-Motivated Self-Aware Agents](https://arxiv.org/abs/1802.07442)
-6. [Soft Actor-Critic for Discrete Action Settings](https://medium.com/@kengz/soft-actor-critic-for-continuous-and-discrete-actions-eeff6f651954)
+6. [Soft Actor-Critic for Discrete Action Settings](https://arxiv.org/abs/1910.07207)
 
 ## Articles
 
