@@ -35,9 +35,14 @@ class CategoricalPolicy(BaseNetwork):
         
         return self.layers[-1](x)
     
-    def sample(self, state, eps=1e-6):
-        logits = self.forward(state)
-        action_probs = F.softmax(logits, dim=1)
+    def greedy_action(self, state):
+        action_logits = self.forward(state)
+        action = torch.argmax(action_logits, dim=1, keepdim=True)
+        return action
+
+    def sample_action(self, state, eps=1e-6):
+        action_logits = self.forward(state)
+        action_probs = F.softmax(action_logits, dim=1)
         action_dist = Categorical(action_probs)
         action = action_dist.sample().view(-1, 1)
         

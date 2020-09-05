@@ -4,7 +4,7 @@ import numpy as np
 import torch
 from collections import deque
 
-from common.experience_replay import ReplayBuffer
+from common import ReplayBuffer
 from common.utils import make_experience
 
 class Agent():
@@ -76,7 +76,6 @@ class Agent():
 
         start = time.time()
 
-        # writer = SummaryWriter()
         scores_window = deque(maxlen=times_solved)
         best_score = -np.inf
         scores = []
@@ -84,14 +83,18 @@ class Agent():
         for i_episode in range(1, num_episodes+1):
             state = self.reset()
             score = 0
+            done = False
+            time_step = 0
 
-            for time_step in range(max_steps):
+            while not done:
                 action = self.act(state)
                 next_state, reward, done, _ = env.step(action)
 
                 self.step(state, action, reward, next_state, done)
+
+                time_step += 1
                 
-                if not done and time_step == max_steps-1:
+                if not done and time_step == max_steps:
                     # We reached max_steps
                     done = True
                     

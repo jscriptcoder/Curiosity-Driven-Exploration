@@ -4,7 +4,7 @@ from torch.nn.utils import clip_grad_norm_
 import numpy as np
 from agent import Agent
 from common import CategoricalPolicy, Critic
-from common.utils import soft_update, make_experience, from_experience
+from common.utils import device, soft_update, make_experience, from_experience
 
 
 class SACAgent(Agent):
@@ -75,9 +75,9 @@ class SACAgent(Agent):
         state = torch.FloatTensor(state).unsqueeze(0).to(device)
 
         if train:
-            action, _, _ = self.policy.sample(state)
+            action, _, _ = self.policy.sample_action(state)
         else:
-            _, _, action = self.policy.sample(state)
+            action = self.policy.greedy_action(state)
 
         # We need to extract the action from position 0
         # because previously we inserted a new dimension
@@ -182,7 +182,7 @@ class SACAgent(Agent):
          dones) = from_experience(experiences)
         
         # ---------------------------- update q-values ---------------------------- #
-        next_actions, next_log_probs, _ = self.policy.sample(next_states)
+        next_actions, _, next_log_probs = self.policy.sample_action(next_states)
 
         self.update_Q(states, 
                       actions, 
@@ -193,7 +193,7 @@ class SACAgent(Agent):
                       dones)
         
         # ---------------------------- update policy ---------------------------- #
-        pred_actions, pred_log_props, _ = self.policy.sample(states)
+        pred_actions, _, pred_log_props = self.policy.sample_action(states)
 
         self.update_policy(states, pred_actions, pred_log_props)
         
