@@ -87,6 +87,7 @@ class Agent():
             time_step = 0
 
             while not done:
+                print(state)
                 action = self.act(state)
                 next_state, reward, done, _ = env.step(action)
 

@@ -9,21 +9,18 @@ class Critic(BaseNetwork):
     def __init__(self, state_size, action_size, hidden_size, activ):
         super().__init__(activ)
 
-        dims = (state_size + action_size,) + hidden_size + (1,)
+        dims = (state_size,) + hidden_size + (action_size,)
 
         self.build_layers(dims)
         self.reset_parameters()
         self.to(device)
 
-    def forward(self, state, action):
-        """Maps state and action => Q-values, Q(s,a) => Q-values"""
+    def forward(self, state):
+        """Maps state to Q-values, Q(s) => Q-values"""
         if type(state) != torch.Tensor:
             state = torch.FloatTensor(state).to(device)
 
-        if type(action) != torch.Tensor:
-            action = torch.FloatTensor(action).to(device)
-
-        x = torch.cat([state, action], dim=1)
+        x = state
 
         for layer in self.layers[:-1]:
             x = self.activ(layer(x))

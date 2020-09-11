@@ -10,7 +10,7 @@ config = Config()
 config.env = env
 config.env_solved = 200
 config.state_size = env.observation_space.shape[0]
-config.action_size = 1
+config.action_size = env.action_space.n
 
 agent = SACAgent(config)
 agent.summary()
