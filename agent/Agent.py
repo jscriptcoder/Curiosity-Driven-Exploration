@@ -5,7 +5,7 @@ import torch
 from collections import deque
 
 from common import ReplayBuffer
-from common.utils import make_experience
+from common.utils import make_experience, get_time_elapsed
 
 class Agent():
     """Common logic"""

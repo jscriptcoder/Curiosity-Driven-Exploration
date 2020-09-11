@@ -22,7 +22,6 @@ class CategoricalPolicy(BaseNetwork):
         
     def reset_parameters(self):
         super().reset_parameters()
-        self.log_std.weight.data.uniform_(-3e-3, 3e-3)
 
     def forward(self, state):
         if type(state) != torch.Tensor:

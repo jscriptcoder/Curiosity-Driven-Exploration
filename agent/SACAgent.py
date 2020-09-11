@@ -68,8 +68,6 @@ class SACAgent(Agent):
             self.alpha = config.alpha
     
     def act(self, state, train=True):
-        action_limit = self.config.action_limit
-
         # Since there is only one state we're gonna insert a new dimension
         # so we make it as if it was batch_size=1
         state = torch.FloatTensor(state).unsqueeze(0).to(device)
@@ -79,11 +77,7 @@ class SACAgent(Agent):
         else:
             action = self.policy.greedy_action(state)
 
-        # We need to extract the action from position 0
-        # because previously we inserted a new dimension
-        action = action.detach().cpu().numpy()[0]
-
-        return np.clip(action, -action_limit, action_limit)
+        return action.item()
 
     def update_Q(self,
                  states,

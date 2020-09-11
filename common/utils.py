@@ -1,3 +1,5 @@
+import time
+import datetime
 import torch
 import numpy as np
 from collections import namedtuple
@@ -60,3 +62,16 @@ def from_experience(experiences):
             .astype(np.uint8)).to(device)
     
     return states, actions, rewards, next_states, dones
+
+def get_time_elapsed(start, end=None):
+    """Returns a human readable (HH:mm:ss) time difference between two times
+    Args:
+        start (float)
+        end (float): optional value
+            Default: now
+    """
+
+    if end is None:
+        end = time.time()
+    elapsed = round(end-start)
+    return str(datetime.timedelta(seconds=elapsed))
