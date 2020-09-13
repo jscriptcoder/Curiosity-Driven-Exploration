@@ -8,7 +8,10 @@ from common.utils import device, soft_update, make_experience, from_experience
 
 
 class SACAgent(Agent):
-    """Soft Actor-Critic
+    """Soft Actor-Critic for Discrete Action Settings
+    https://arxiv.org/abs/1910.07207
+
+    Soft Actor-Critic
     https://arxiv.org/abs/1801.01290
     https://spinningup.openai.com/en/latest/algorithms/sac.html
     https://www.youtube.com/watch?v=CLZkpo8rEGg
