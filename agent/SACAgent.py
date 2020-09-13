@@ -82,6 +82,7 @@ class SACAgent(Agent):
 
     def update_Q(self,
                  states,
+                 actions,
                  next_states,
                  next_action_probs, 
                  next_log_prob,
@@ -98,15 +99,17 @@ class SACAgent(Agent):
             Q2_targets_next = self.Q2_target(next_states)
 
             Q_targets_next = torch.min(Q1_targets_next, Q2_targets_next)
-            Q_targets_next *= next_action_probs
-            Q_targets_next = torch.mean(Q_targets_next, dim=1).unsqueeze(-1)
+            Q_targets_next = Q_targets_next - self.alpha * next_log_prob
+            Q_targets_next = Q_targets_next * next_action_probs
+            Q_targets_next = Q_targets_next.sum(dim=1, keepdim=True)
 
-            Q_targets = rewards + (gamma * \
-                                   (Q_targets_next - self.alpha * next_log_prob) * \
-                                   (1 - dones))
+            Q_targets = rewards + (gamma * Q_targets_next) * (1 - dones)
 
         Q1_expected = self.Q1_local(states)
         Q2_expected = self.Q2_local(states)
+
+        Q1_expected = Q1_expected.gather(1, actions)
+        Q2_expected = Q2_expected.gather(1, actions)
 
         # Compute critic loss
         if use_huber_loss:
@@ -181,6 +184,7 @@ class SACAgent(Agent):
         _, next_action_probs, next_log_probs = self.policy.sample_action(next_states)
 
         self.update_Q(states, 
+                      actions, 
                       next_states, 
                       next_action_probs, 
                       next_log_probs, 

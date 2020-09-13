@@ -40,7 +40,9 @@ class CategoricalPolicy(BaseNetwork):
         return action
 
     def sample_action(self, state, eps=1e-6):
+        # print(state)
         action_logits = self.forward(state)
+        # print(action_logits)
         action_probs = F.softmax(action_logits, dim=1)
         action_dist = Categorical(action_probs)
         action = action_dist.sample().view(-1, 1)

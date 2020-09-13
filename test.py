@@ -11,6 +11,9 @@ config.env = env
 config.env_solved = 200
 config.state_size = env.observation_space.shape[0]
 config.action_size = env.action_space.n
+# config.tau = 1e-2
+# config.lr_actor = 1e-3
+# config.lr_critic = 1e-3
 
 agent = SACAgent(config)
 agent.summary()

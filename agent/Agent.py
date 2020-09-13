@@ -3,11 +3,12 @@ import random
 import numpy as np
 import torch
 from collections import deque
+from abc import ABC, abstractmethod
 
 from common import ReplayBuffer
 from common.utils import make_experience, get_time_elapsed
 
-class Agent():
+class Agent(ABC):
     """Common logic"""
 
     name = 'Agent'
@@ -22,7 +23,8 @@ class Agent():
         
         self.policy_losses = []
         self.value_losses = []
-
+    
+    @abstractmethod
     def act(self, state, train=True):
         pass
 
@@ -31,9 +33,7 @@ class Agent():
         self.value_losses = []
         return self.config.env.reset()
 
-    def update_target_networks(self):
-        pass
-
+    @abstractmethod
     def learn(self, experiences):
         pass
 
@@ -87,7 +87,6 @@ class Agent():
             time_step = 0
 
             while not done:
-                print(state)
                 action = self.act(state)
                 next_state, reward, done, _ = env.step(action)
 
@@ -160,6 +159,15 @@ class Agent():
                 if done: break
                 
         return total_reward / times_solved
+
+    @abstractmethod
+    def save_weights(self, path='weights'):
+        pass
     
+    @abstractmethod
+    def load_weights(self, path='weights'):
+        pass
+
+    @abstractmethod
     def summary(self, agent_name='Agent'):
         pass
