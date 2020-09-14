@@ -87,8 +87,6 @@ class SACAgent(Agent):
                  states,
                  actions,
                  next_states,
-                 next_action_probs, 
-                 next_log_prob,
                  rewards,
                  dones):
 
@@ -97,15 +95,15 @@ class SACAgent(Agent):
         gamma = self.config.gamma
         tau = self.config.tau
 
+        _, next_action_probs, next_log_probs = self.policy.sample_action(next_states)
+
         with torch.no_grad():
             Q1_targets_next = self.Q1_target(next_states)
             Q2_targets_next = self.Q2_target(next_states)
 
             Q_targets_next = torch.min(Q1_targets_next, Q2_targets_next)
-            Q_targets_next = Q_targets_next - self.alpha * next_log_prob
-
-            # Expectation of Q target
-            Q_targets_next = torch.sum(Q_targets_next * next_action_probs, dim=1, keepdim=True)
+            Q_targets_next = Q_targets_next - self.alpha * next_log_probs
+            Q_targets_next = torch.sum(next_action_probs * Q_targets_next, dim=1, keepdim=True)
 
             Q_targets = rewards + (gamma * Q_targets_next) * (1 - dones)
 
@@ -145,16 +143,18 @@ class SACAgent(Agent):
         soft_update(self.Q1_local, self.Q1_target, tau)
         soft_update(self.Q2_local, self.Q2_target, tau)
 
-    def update_policy(self, states, pred_action_probs, pred_log_prop):
+    def update_policy(self, states):
         grad_clip_actor = self.config.grad_clip_actor
+
+        _, action_probs, log_props = self.policy.sample_action(states)
 
         Q1_pred = self.Q1_local(states)
         Q2_pred = self.Q2_local(states)
 
         Q_pred = torch.min(Q1_pred, Q2_pred)
 
-        policy_loss = self.alpha * pred_log_prop - Q_pred
-        policy_loss = torch.sum(policy_loss * pred_action_probs, dim=1, keepdim=True)
+        policy_loss = self.alpha * log_props - Q_pred
+        policy_loss = torch.sum(action_probs * policy_loss, dim=1, keepdim=True)
         policy_loss = policy_loss.mean()
 
         self.policy_losses.append(policy_loss.item())
@@ -168,12 +168,15 @@ class SACAgent(Agent):
 
         self.policy_optim.step()
 
-    def try_update_alpha(self, action_probs, log_prob):
+        return action_probs, log_props
+
+    def try_update_alpha(self, action_probs, log_probs):
         alpha_auto_tuning = self.config.alpha_auto_tuning
 
         if alpha_auto_tuning:
-            log_prob = torch.sum(log_prob * action_probs, dim=1, keepdim=True).detach()
-            alpha_loss = -(self.log_alpha * (log_prob + self.target_entropy)).mean()
+            alpha_loss = -self.log_alpha * (log_probs.detach() + self.target_entropy)
+            alpha_loss = torch.sum(action_probs.detach() * alpha_loss, dim=1, keepdim=True)
+            alpha_loss = alpha_loss.mean()
 
             self.alpha_optim.zero_grad()
             alpha_loss.backward()
@@ -188,24 +191,15 @@ class SACAgent(Agent):
          next_states, 
          dones) = from_experience(experiences)
         
-        # ---------------------------- update q-values ---------------------------- #
-        _, next_action_probs, next_log_probs = self.policy.sample_action(next_states)
-
         self.update_Q(states, 
                       actions, 
                       next_states, 
-                      next_action_probs, 
-                      next_log_probs, 
                       rewards, 
                       dones)
         
-        # ---------------------------- update policy ---------------------------- #
-        _, pred_action_probs, pred_log_props = self.policy.sample_action(states)
-
-        self.update_policy(states, pred_action_probs, pred_log_props)
+        action_probs, log_props = self.update_policy(states)
         
-        # ---------------------------- update temeperature ---------------------------- #
-        self.try_update_alpha(pred_action_probs, pred_log_props)
+        self.try_update_alpha(action_probs, log_props)
 
     def save_weights(self, path='weights'):
         torch.save(self.policy.state_dict(),
@@ -218,7 +212,7 @@ class SACAgent(Agent):
                            format(path, self.name),
                            map_location='cpu'))
 
-    def summary(self, agent_name='SAC Agent'):
+    def summary(self, agent_name='SAC [discrete] Agent'):
         print('{}:'.format(agent_name))
         print('==========')
         print('')
