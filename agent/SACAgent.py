@@ -65,8 +65,8 @@ class SACAgent(Agent):
             # temperature variable to be learned, and its target entropy
             self.log_alpha = torch.zeros(1, requires_grad=True, device=device)
             self.alpha = self.log_alpha.detach().exp()
-            # Target entropy is -log(1/|A|) * ratio (= maximum entropy * ratio).
-            # self.target_entropy = -np.log(1.0 / config.action_size) * 0.98 # 0.98 => target_entropy_ratio
+
+            # Target entropy is -|A|
             self.target_entropy = -config.action_size
             self.alpha_optim = config.optim_alpha([self.log_alpha], lr=config.lr_alpha)
         else:
@@ -148,7 +148,7 @@ class SACAgent(Agent):
 
         _, action_probs, log_props = self.policy.sample_action(states)
 
-        # Expectations of entropies.
+        # Expectations of entropies
         log_props = torch.sum(action_probs * log_props, dim=1, keepdim=True)
 
         Q1_pred = self.Q1_local(states)
