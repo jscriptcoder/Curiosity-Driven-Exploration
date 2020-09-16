@@ -9,7 +9,9 @@ Research in progress...
 3. [Episodic Curiosity through Reachability](https://arxiv.org/abs/1810.02274)
 4. [A survey on intrinsic motivation in reinforcement learning](https://arxiv.org/abs/1908.06976)
 5. [Learning to Play with Intrinsically-Motivated Self-Aware Agents](https://arxiv.org/abs/1802.07442)
-6. [Soft Actor-Critic for Discrete Action Settings](https://arxiv.org/abs/1910.07207)
+6. [SAC: Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic Actor](https://arxiv.org/abs/1801.01290)
+7. [SAC Algorithms and Applications](https://arxiv.org/pdf/1812.05905.pdf)
+8. [SAC for Discrete Action Settings](https://arxiv.org/abs/1910.07207)
 
 ## Articles
 
@@ -38,3 +40,4 @@ Research in progress...
 3. [Reproduction of Curiosity-driven Exploration by Self-supervised Prediction in PyTorch](https://github.com/qfettes/CuriosityDrivenExplorationBySelfSupervisedPrediction)
 4. [Soft Actor-Critic algorithm to allow for both image observations and discrete action spaces](https://github.com/ac-93/soft-actor-critic)
 5. [Deep Reinforcement Learning Algorithms with PyTorch](https://github.com/p-christ/Deep-Reinforcement-Learning-Algorithms-with-PyTorch)
+6. [SAC-Discrete in PyTorch](https://github.com/ku2482/sac-discrete.pytorch)
