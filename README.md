@@ -40,3 +40,4 @@ Research in progress...
 3. [Reproduction of Curiosity-driven Exploration by Self-supervised Prediction in PyTorch](https://github.com/qfettes/CuriosityDrivenExplorationBySelfSupervisedPrediction)
 4. [Soft Actor-Critic algorithm to allow for both image observations and discrete action spaces](https://github.com/ac-93/soft-actor-critic)
 5. [Deep Reinforcement Learning Algorithms with PyTorch](https://github.com/p-christ/Deep-Reinforcement-Learning-Algorithms-with-PyTorch)
+6. [SAC-Discrete in PyTorch](https://github.com/ku2482/sac-discrete.pytorch)
