@@ -68,6 +68,7 @@ class SACAgent(Agent):
 
             # Target entropy is -|A|
             self.target_entropy = -config.action_size
+
             self.alpha_optim = config.optim_alpha([self.log_alpha], lr=config.lr_alpha)
         else:
             self.alpha = config.alpha
