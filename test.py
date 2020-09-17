@@ -11,12 +11,12 @@ config.env = env
 config.env_solved = 200
 config.state_size = env.observation_space.shape[0]
 config.action_size = env.action_space.n
-config.batch_size = 256
+config.batch_size = 128
 config.update_every = 1
 config.max_steps = 500
-config.max_steps_reward = -100
+# config.max_steps_reward = -100
 
-config.tau = 5e-3
+config.tau = 1e-2
 config.lr_actor = 3e-4
 config.lr_critic = 3e-4
 config.hidden_actor = (64, 64)
